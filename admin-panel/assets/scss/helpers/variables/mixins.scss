@@ -1,0 +1,108 @@
+/// Word wrap fix for long spaceless strings
+/// @link https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  // hyphens: auto;
+}
+
+/// Ellipsis fix for long spaceless strings
+/// @link https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/// Mixin - Full Width, even outside container
+/// @param {bool} $undo [false]
+/// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
+@mixin full-width($undo: false) {
+  @if $undo {
+    margin-left: 0;
+    margin-right: 0;
+    position: static;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: 100%;
+  } @else {
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+
+// Media query helpers
+// -------------------------------------------------------------------------------------------------------
+
+// Min width media queries
+$fix-mqs: false !default;
+
+// Media query min-width based
+@mixin mq($name) {
+  @if $fix-mqs {
+    @if $fix-mqs>=map-get($grid-breakpoints, $name) {
+      @content;
+    }
+  } @else {
+    @if not map-has-key($grid-breakpoints, $name) {
+      @warn "Warning: `#{$name}` is not a valid breakpoint name";
+    } @else {
+      @media (min-width: map-get($grid-breakpoints, $name)) {
+        @content;
+      }
+    }
+  }
+}
+
+// Max width media queries, use rarely if any
+@mixin mq-max($name) {
+  @if $fix-mqs {
+    @if $fix-mqs>=map-get($grid-breakpoints, $name) {
+      @content;
+    }
+  } @else {
+    @if not map-has-key($grid-breakpoints, $name) {
+      @warn "Warning: `#{$name}` is not a valid breakpoint name";
+    } @else {
+      @media (max-width: map-get($grid-breakpoints, $name)) {
+        @content;
+      }
+    }
+  }
+}
+
+// Image + icons
+// ----------------------------------------------------------------
+$defaultIcon: 'svg';
+
+@mixin icon($name, $type: $defaultIcon) {
+  @if ($type != $defaultIcon) {
+    background-image: url('/icons/' + $name + '.' + $type);
+  }
+
+  //? Consider the defaultIcon type as SVG
+  @else {
+    $type: defaultIcon;
+    background-image: url('/icons/' + $name + '.svg');
+  }
+}
+
+$defaultImage: 'png';
+
+@mixin image($name, $type: $defaultImage) {
+  @if ($type != defaultImage) {
+    background-image: url('/images/' + $name + '.' + $type);
+  }
+
+  //? Consider the defaultImage as JPG
+  @else {
+    background-image: url('/images/' + $name + '.png');
+  }
+}

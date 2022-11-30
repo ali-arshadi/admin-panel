@@ -1,0 +1,46 @@
+@import 'variables';
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.container-small {
+  max-width: 840px;
+  margin: auto;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include mq(sm) {
+    max-width: 540px;
+  }
+  @include mq(md) {
+    max-width: 720px;
+  }
+  @include mq(lg) {
+    max-width: 960px;
+  }
+  @include mq(xl) {
+    max-width: 1140px;
+  }
+  @include mq(xxl) {
+    max-width: 1320px;
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.mt-auto {
+  margin-top: auto;
+}
+.mb-auto {
+  margin-bottom: auto;
+}

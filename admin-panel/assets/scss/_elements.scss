@@ -1,0 +1,26 @@
+html {
+  scroll-behavior: smooth;
+}
+
+// Links
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+// Image
+// ----------------------------------------------------------------
+img {
+  width: 100%;
+}
+
+// Other
+// ----------------------------------------------------------------
+picture {
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
