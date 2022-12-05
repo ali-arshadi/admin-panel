@@ -51,7 +51,7 @@ export default {
         implementation: require('sass'),
       },
       scss: {
-        implementation: require('scss'),
+        implementation: require('sass'),
       },
     },
   },
