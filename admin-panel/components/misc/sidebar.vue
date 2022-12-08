@@ -7,8 +7,8 @@
       <PageButton
         :name="page.name"
         :url="page.pageUrl"
-        v-for="page in pages"
-        :key="page.name"
+        v-for="(page, index) in pages"
+        :key="index"
       />
     </div>
     <div class="sidebar-footer-wrapper">
@@ -183,6 +183,15 @@ export default Vue.extend({
   grid-gap: 20px;
   height: 50%;
   margin-bottom: 50px;
+  scrollbar-color: $eton-blue transparent;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $eton-blue;
+  }
 }
 .sidebar-footer-wrapper {
   display: flex;
