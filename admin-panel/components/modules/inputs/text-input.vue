@@ -7,7 +7,6 @@
       type="text"
       :id="`text-input ${label}`"
       :placeholder="placeholder"
-      :value="inputValue"
       @input="handleInput"
     />
   </div>
@@ -24,9 +23,6 @@ export default Vue.extend({
     placeholder: {
       type: String,
       default: 'Text input',
-    },
-    inputValue: {
-      type: String,
     },
   },
   methods: {
