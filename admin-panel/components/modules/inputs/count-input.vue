@@ -31,14 +31,14 @@ export default Vue.extend({
       count: this.min,
     };
   },
+  mounted() {
+    this.$emit('input', this.count);
+  },
   methods: {
     minusCount() {
       if (this.count !== this.min) {
         this.count -= 1;
-        console.log(
-          '🚀 ~ file: count-input.vue:38 ~ minusCount ~ this.count',
-          this.count
-        );
+        this.$emit('input', this.count);
       } else {
         return;
       }
@@ -46,10 +46,7 @@ export default Vue.extend({
     plusCount() {
       if (this.count !== this.max) {
         this.count += 1;
-        console.log(
-          '🚀 ~ file: count-input.vue:49 ~ plusCount ~ this.count',
-          this.count
-        );
+        this.$emit('input', this.count);
       } else {
         return;
       }
